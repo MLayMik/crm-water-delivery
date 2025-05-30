@@ -2,14 +2,6 @@
 
 ---
 
-## 📦 0. Setup (Day 1)
-- [ ] Create Vue project (Vite + TS + pnpm)
-- [ ] Add Vue Router, Pinia
-- [ ] Setup ESLint, Prettier, Vitest
-- [ ] Add MSW (mock `/api/ping`)
-
----
-
 ## 🧱 1. Project Structure
 - [ ] Create folders: `entities`, `features`, `pages`, `widgets`
 - [ ] Define models: `User`, `Client`, `DeliverySchedule`, `CourierRoute`
@@ -19,9 +11,9 @@
 
 ## 🎨 DESIGN: Global UI
 - [ ] Basic layout (header, sidebar, main area)
+- [ ] Basic components (buttons, checkmarks...)
 - [ ] Theme: dark
 - [ ] Fonts, spacing, button styles
-- [ ] Loading states, empty states, error messages
 
 ---
 
@@ -34,7 +26,7 @@
 ### 🎨 DESIGN: Login Page
 - [ ] Centered login form (email, password)
 - [ ] "Login" button
-- [ ] Error message (invalid credentials)
+- [ ] Error message (invalid credentials - validation)
 
 ---
 
@@ -45,7 +37,8 @@
 - [ ] Write Vitest + MSW tests
 
 ### 🎨 DESIGN: Users Page
-- [ ] Table with: name, role, email
+user - client, delivery guy or manager
+- [ ] Table with: name, role, email (for admin/manager)
 - [ ] Button: Add User
 - [ ] Modal: create/edit user
 - [ ] Delete confirmation dialog
@@ -55,14 +48,14 @@
 ## 🏢 4. Clients CRUD
 - [ ] List clients (table)
 - [ ] Add/edit modal
-- [ ] Fields: company name, address, contact
+- [ ] Fields: name, address, contact
 - [ ] Mock + test same as users
 
 ### 🎨 DESIGN: Clients Page
-- [ ] Table with: company, contact, address
+- [ ] Table with: name, contact, address
 - [ ] Button: Add Client
 - [ ] Modal: create/edit client
-- [ ] Address input with map pin (optional)
+- [ ] Address input with map pin (via google maps, optional)
 
 ---
 
@@ -75,29 +68,26 @@
 - [ ] Form: select client, day, time slot
 - [ ] Table: delivery schedule
 - [ ] Modal or drawer: create/edit delivery
-- [ ] Display "Next delivery" for client
 
 ---
 
 ## 🧭 6. Courier View
 - [ ] Page: today’s route
 - [ ] Checklist of deliveries
-- [ ] Map (Leaflet):
+- [ ] Map (Leaflet or google maps):
   - [ ] Markers + route line
   - [ ] Button: build route (Directions API)
 
 ### 🎨 DESIGN: Courier Page
 - [ ] List: address, client name, "delivered" checkbox
-- [ ] Map: marker for each stop, route line
+- [ ] Map: marker for each stop, route line (everything will be via google maps)
 - [ ] Button: "Build route"
-- [ ] Mobile-friendly layout
 
 ---
 
 ## 🎨 7. Polish & Portfolio
 - [ ] Light/dark theme (CSS vars)
 - [ ] Landing: "What CRM can do"
-- [ ] Record demos (Loom)
 - [ ] Add README (screenshots + how to run)
 
 ### 🎨 DESIGN: Landing Page
@@ -105,5 +95,76 @@
 - [ ] Description of features
 - [ ] Screenshots or animations of app
 - [ ] Call to Action (GitHub link or demo)
+
+---
+
+# 🔐 Roles and Permissions — CRM Water Delivery
+
+## 👤 1. Admin / Manager
+
+> Это основной пользователь. Управляет системой.
+
+### 📄 Страницы:
+- [ ] Login
+- [ ] Dashboard (обзор заказов/доставок)
+- [ ] Users Management
+- [ ] Clients Management
+- [ ] Deliveries Management
+- [ ] Logout
+
+### ✅ Может:
+- [ ] Логиниться
+- [ ] Видеть список всех пользователей
+- [ ] Добавлять / редактировать / удалять пользователей
+- [ ] Видеть список клиентов
+- [ ] Добавлять / редактировать / удалять клиентов
+- [ ] Создавать и управлять расписаниями доставок
+- [ ] Видеть маршруты по клиентам
+- [ ] Смотреть дашборд (сколько доставок сегодня и т.п.)
+
+---
+
+## 🚚 2. Courier (Доставщик)
+
+> Видит только сегодняшние доставки и маршрут.
+
+### 📄 Страницы:
+- [ ] Login
+- [ ] My Deliveries (Today Route)
+- [ ] Logout
+
+### ✅ Может:
+- [ ] Логиниться
+- [ ] Видеть список точек доставки на сегодня
+- [ ] Отмечать доставку как "выполнено"
+- [ ] Видеть карту с маршрутом (маршрутизация)
+- [ ] Построить маршрут (по кнопке)
+- [ ] Хранить прогресс доставки в localStorage
+
+---
+
+## 🧑‍💼 3. Client (Клиент)
+
+> Может проверить своё расписание, историю доставок и оформить новую доставку
+
+### 📄 Страницы:
+- [ ] Login
+- [ ] My Deliveries
+- [ ] Logout
+
+### ✅ Может:
+- [ ] Логиниться
+- [ ] Видеть свои будущие и прошлые доставки
+- [ ] Посмотреть ближайшую дату и время
+- [ ] Посмотреть адрес и детали доставки
+
+---
+
+## 📌 Технические детали
+
+- [ ] Роль приходит с `POST /auth/login` как `role: 'admin' | 'courier' | 'client'`
+- [ ] Создать middleware (или глобальную навигационную защиту) для роутера
+- [ ] Добавить в Pinia `userStore` поле `role`
+- [ ] Навигация / доступ — на основе `role`
 
 ---
