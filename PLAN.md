@@ -23,7 +23,7 @@
 - [ ] Save token to Pinia + localStorage
 - [ ] Protect private routes
 
-### 🎨 DESIGN: Login Page
+### 🎨 DESIGN: Login Paga
 - [ ] Centered login form (email, password)
 - [ ] "Login" button
 - [ ] Error message (invalid credentials - validation)
