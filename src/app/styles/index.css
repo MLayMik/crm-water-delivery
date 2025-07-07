@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  box-shadow:
+    0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+    0px 0px 4px 0px rgba(0, 0, 0, 0.04);
+}
+
+.reviewCard {
+  box-shadow: 0px 10px 100px 0px rgba(0, 0, 0, 0.24);
+}
+
+.contactCard {
+  box-shadow:
+    0px 8px 18px 0px rgba(0, 0, 0, 0.07),
+    0px 33px 33px 0px rgba(0, 0, 0, 0.06),
+    0px 74px 45px 0px rgba(0, 0, 0, 0.04),
+    0px 132px 53px 0px rgba(0, 0, 0, 0.01),
+    0px 206px 58px 0px rgba(0, 0, 0, 0);
+}
+
+.paragraphIcon {
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.04));
+}
+
+.swiper-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: #d2d2d2;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  --swiper-pagination-bullet-active-color: #246def;
+  --swiper-pagination-bullet-active-opacity: 1;
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-[90rem];
+  }
+}
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-garamod: "EB Garamond", serif;
+  --color-primary: #aab9ff;
+  --color-secondary: #ffb3cc;
+  --animate-fade-in: fade-in 1s ease-in-out;
+  @keyframes fade-in {
+    0% {
+      opacity: 0%;
+    },
+    100% {
+      opacity: 100%;
+    }
+  }
+}
+
+@import "tailwindcss"
