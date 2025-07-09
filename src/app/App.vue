@@ -1,6 +1,9 @@
 <script setup>
+import AppLayout from '@/pages/layouts/AppLayout.vue'
 </script>
 
 <template>
-  <RouterView />
+  <AppLayout>
+    <RouterView :key="$route.fullPath" />
+  </AppLayout>
 </template>
