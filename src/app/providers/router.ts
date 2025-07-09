@@ -1,5 +1,6 @@
-import { routes } from '@/pages/routes'
 import { createRouter, createWebHistory } from 'vue-router'
+import { routes } from '@/pages/routes'
+import { loadLayoutMiddleware } from '@/shared/lib/router'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -10,3 +11,5 @@ export const router = createRouter({
     }
   },
 })
+
+router.beforeEach(loadLayoutMiddleware)
