@@ -15,6 +15,7 @@ export const routes: RouteRecordRaw[] = [
     component: LoginPage,
     meta: {
       layout: AppLayoutsEnum.auth,
+      requierAuth: false,
     },
   },
 ]
