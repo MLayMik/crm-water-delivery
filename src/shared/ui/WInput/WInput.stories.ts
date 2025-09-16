@@ -4,7 +4,6 @@ import { WInput } from '.'
 export default {
   title: 'Shared/WInput',
   component: WInput,
-  tags: ['autodocs'],
 
   args: {
     label: '',

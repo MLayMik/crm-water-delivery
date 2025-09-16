@@ -20,7 +20,7 @@ export const userhandlers = [
         name: 'Courier',
       }, { status: 200 })
     }
-    if (email === 'client' && password === '123') {
+    if (email === 'client@gmail.com' && password === '123') {
       return HttpResponse.json({
         token: 'client-token',
         role: 'client',

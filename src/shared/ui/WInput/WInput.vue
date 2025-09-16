@@ -8,6 +8,7 @@ export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   class?: ClassValue
   label?: string
   small?: boolean
+  type?: string
 }
 
 defineOptions({
@@ -33,6 +34,7 @@ const modelValue = defineModel<string>()
     <input
       v-model="modelValue"
       v-bind="$attrs"
+      :type="props.type || 'text'"
       :class="cn(
         `
           w-full rounded-xl border border-slate-300 bg-white px-4 py-2 text-base
