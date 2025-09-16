@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-800 py-6 text-white">
+  <footer class="font-poppins bg-gray-800 py-6 text-white">
     <div
       class="
         container mx-auto flex flex-col items-center justify-between gap-4
