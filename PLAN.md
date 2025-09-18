@@ -3,30 +3,30 @@
 ---
 
 ## 🧱 1. Project Structure
-- [ ] Create folders: `entities`, `features`, `pages`, `widgets`
+- [x] Create folders: `entities`, `features`, `pages`, `widgets`
 - [ ] Define models: `User`, `Client`, `DeliverySchedule`, `CourierRoute`
 - [ ] Add enums (user roles, delivery status, etc.)
 
 ---
 
 ## 🎨 DESIGN: Global UI
-- [ ] Basic layout (header, sidebar, main area)
-- [ ] Basic components (buttons, checkmarks...)
-- [ ] Theme: dark
-- [ ] Fonts, spacing, button styles
+- [x] Basic layout (header, sidebar, main area)
+- [x] Basic components (buttons, checkmarks...)
+- [x] Theme: dark
+- [x] Fonts, spacing, button styles
 
 ---
 
 ## 🔐 2. Auth Page
-- [ ] LogIn / LogOn
-- [ ] Mock `POST /auth/login` (return JWT)
-- [ ] Save token to Pinia + localStorage
+- [x] LogIn / LogOn
+- [x] Mock `POST /auth/login` (return JWT)
+- [x] Save token to Pinia + localStorage
 - [ ] Protect private routes
 
 ### 🎨 DESIGN: Login Paga
-- [ ] Centered login form (email, password)
-- [ ] "Login" button
-- [ ] Error message (invalid credentials - validation)
+- [x] Centered login form (email, password)
+- [x] "Login" button
+- [x] Error message (invalid credentials - validation)
 
 ---
 
