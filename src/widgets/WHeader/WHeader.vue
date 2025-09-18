@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { Droplet, LogOut, User } from 'lucide-vue-next'
+import { Droplet } from 'lucide-vue-next'
 import { onMounted, ref } from 'vue'
-import { router } from '@/app/providers/router'
-import { useUserStore } from '@/entities/user/model/userStore'
-import { WButton } from '@/shared/ui/WButton'
-
-const user = useUserStore()
 
 const showHeader = ref(false)
 onMounted(() => {
@@ -39,32 +34,6 @@ onMounted(() => {
             <li><a href="#" class="hover:text-blue-400">Отчёты</a></li>
           </ul>
         </nav>
-
-        <div class="flex items-center gap-6">
-          <WButton
-            class="
-              flex gap-3 bg-amber-700 px-4 py-2
-              hover:bg-amber-800
-            "
-          >
-            <User />
-            <button
-              v-if="!user.isAuth"
-              type="button"
-              @click="router.push('/auth')"
-            >
-              LogIn
-            </button>
-            <span v-if="user.isAuth">{{ user.currentUser?.name }}</span>
-          </WButton>
-          <button
-            v-if="user.isAuth"
-            type="button"
-            @click="user.logout"
-          >
-            <LogOut />
-          </button>
-        </div>
       </div>
     </header>
   </Transition>
