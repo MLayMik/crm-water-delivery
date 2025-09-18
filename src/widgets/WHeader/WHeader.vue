@@ -11,7 +11,6 @@ const showHeader = ref(false)
 onMounted(() => {
   showHeader.value = true
 })
-console.log(user.currentUser)
 </script>
 
 <template>
