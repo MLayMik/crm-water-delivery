@@ -1,4 +1,5 @@
 import type { RouteRecordInfo, RouteRecordRaw } from 'vue-router'
+import { AppLayoutsEnum } from '@/shared/lib/router/types'
 import { HomePage } from './home'
 import { LoginPage } from './login'
 
@@ -12,6 +13,9 @@ export const routes: RouteRecordRaw[] = [
     name: 'Auth',
     path: '/auth',
     component: LoginPage,
+    meta: {
+      layout: AppLayoutsEnum.auth,
+    },
   },
 ]
 

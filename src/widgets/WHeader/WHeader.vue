@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { Droplet } from 'lucide-vue-next'
 import { onMounted, ref } from 'vue'
+import { supabase } from '@/shared/api/supabase-client'
+import WButton from '@/shared/ui/WButton/WButton.vue'
 
 const showHeader = ref(false)
 onMounted(() => {
   showHeader.value = true
 })
+const isLogged = ref(!!supabase.auth.getSession(),
+)
+async function handleLogout() {
+  await supabase.auth.signOut()
+}
 </script>
 
 <template>
@@ -34,6 +41,20 @@ onMounted(() => {
             <li><a href="#" class="hover:text-blue-400">Отчёты</a></li>
           </ul>
         </nav>
+        <div class="flex items-center gap-4">
+          {{ isLogged ? 'Admin' : 'Guest' }}
+          <RouterLink
+            to="/auth"
+          >
+            Login
+          </RouterLink>
+          <WButton
+            variant="light"
+            @click="handleLogout"
+          >
+            Logout
+          </WButton>
+        </div>
       </div>
     </header>
   </Transition>
