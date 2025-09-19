@@ -1,13 +1,19 @@
-import type { IClient } from '@/shared/types'
+import type { IClient, IClientRepository } from '@/shared/types'
 import { clientRepository } from '../api/clientRepository'
 
 class ClientService {
+  private clientRepository: IClientRepository
+
+  constructor(repository: IClientRepository) {
+    this.clientRepository = repository
+  }
+
   async getClients() {
-    return await clientRepository.getAllClients()
+    return await this.clientRepository.getAllClients()
   }
 
   async getClientById(id: number) {
-    return await clientRepository.getClientById(id)
+    return await this.clientRepository.getClientById(id)
   }
 
   async createClient(client: IClient) {
@@ -17,12 +23,12 @@ class ClientService {
   }
 
   async updateClient(client: IClient, id: number) {
-    return await clientRepository.updateClient(client, id)
+    return await this.clientRepository.updateClient(client, id)
   }
 
   async deleteClient(id: number) {
-    return await clientRepository.deleteClient(id)
+    return await this.clientRepository.deleteClient(id)
   }
 }
 
-export const clientService = new ClientService()
+export const clientService = new ClientService(clientRepository)
