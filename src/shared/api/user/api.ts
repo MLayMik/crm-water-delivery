@@ -8,11 +8,6 @@ const endpoints = {
     method: 'post',
     schema: AuthResponseSchema,
   },
-  addUser: {
-    url: '/users',
-    method: 'post',
-    schema: AuthResponseSchema,
-  },
 } satisfies ApiEndpointsAndSchemas
 
 export interface LoginUserParams { email: string, password: string }

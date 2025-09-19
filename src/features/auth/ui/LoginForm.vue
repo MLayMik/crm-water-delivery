@@ -2,9 +2,10 @@
 import { Eye, EyeOff } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { router } from '@/app/providers/router'
+import { userStore } from '@/entities/user/model/userStore'
+import { useLogin } from '@/shared/api/user/query'
 import { SUPABASE_EMAIL, SUPABASE_PASSWORD } from '@/shared/config'
 import WInput from '@/shared/ui/WInput/WInput.vue'
-import { authWithPassword } from '../model/authWithPassword'
 
 const typeOfInput = ref('text')
 
@@ -12,21 +13,27 @@ const email = ref('')
 const password = ref('')
 const errorMsg = ref('')
 
+const { mutate } = useLogin()
+
+const { setIsAuth } = userStore()
+
 async function handleLogin() {
   if (!email.value || !password.value) {
     errorMsg.value = 'Please fill in all fields'
   }
-  try {
-    const data = await authWithPassword(
-      { email: email.value, password: password.value },
-    )
+  mutate(
+    { email: email.value, password: password.value },
+    {
+      onError(error) {
+        errorMsg.value = error.message
+      },
+      onSuccess() {
+        setIsAuth(true)
+        router.push('/')
+      },
+    },
 
-    router.push('/')
-    return data
-  }
-  catch (error: any) {
-    errorMsg.value = error.message
-  }
+  )
 }
 
 function handleAutoFill() {
