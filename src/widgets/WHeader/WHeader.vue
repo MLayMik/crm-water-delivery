@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { Droplet } from 'lucide-vue-next'
 import { onMounted, ref } from 'vue'
-import { supabase } from '@/shared/api/supabase-client'
+import { userStore } from '@/entities/user/model/userStore'
 import WButton from '@/shared/ui/WButton/WButton.vue'
+
+const { isAuth, setIsAuth } = userStore()
 
 const showHeader = ref(false)
 onMounted(() => {
   showHeader.value = true
 })
-const isLogged = ref(!!supabase.auth.getSession(),
-)
+
 async function handleLogout() {
-  await supabase.auth.signOut()
+  setIsAuth(false)
 }
 </script>
 
@@ -42,13 +43,17 @@ async function handleLogout() {
           </ul>
         </nav>
         <div class="flex items-center gap-4">
-          {{ isLogged ? 'Admin' : 'Guest' }}
+          {{ isAuth ? 'Admin' : 'Guest' }}
           <RouterLink
+            v-if="!isAuth"
             to="/auth"
           >
-            Login
+            <WButton>
+              Login
+            </WButton>
           </RouterLink>
           <WButton
+            v-if="isAuth"
             variant="light"
             @click="handleLogout"
           >
